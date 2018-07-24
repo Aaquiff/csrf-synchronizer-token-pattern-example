@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author aaralk
  */
-public class TokenServlet extends HttpServlet {
+public class Token extends HttpServlet {
 
     /**
      * Handles the HTTP <code>POST</code> method.
