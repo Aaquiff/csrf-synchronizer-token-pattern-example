@@ -1,0 +1,1 @@
+# csrf-synchronizer-token-pattern
