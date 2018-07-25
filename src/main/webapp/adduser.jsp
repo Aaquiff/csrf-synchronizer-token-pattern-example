@@ -27,7 +27,6 @@
                 <div class="form-group">
                     <input class="form-control" type="password" id="password" name="password" placeholder="password"/>
                 </div>
-                <input class="form-control" type="text" id="token" name="token" hidden="true"/>
                 <button class="btn btn-primary mb-2" value="submit">Add User</button>
             </form>
         </div>
@@ -53,13 +52,16 @@
 
             });
 
+            //Request the token for the page based on the session cookie
             console.log('Getting token');
-
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
+                    console.log('Got token from web service');
                     var responseObject = JSON.parse(this.responseText);
-                    $('#token').val(responseObject.token);
+                    var frmAddUser = document.getElementById('frmAddUser');
+                    //Inject token to the form as an input
+                    frmAddUser.innerHTML += '<input class="form-control" type="text" id="token" name="token" hidden value ="' + responseObject.token + '"/>';
                 }
             };
             xhttp.open("POST", "./Token", true);
