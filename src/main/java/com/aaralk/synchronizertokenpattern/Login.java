@@ -92,11 +92,7 @@ public class Login extends HttpServlet {
                 //Put the sessionId and corresponding token value
                 KeyStore.map.put(sessionId, tokenId);
 
-                //Set the session cookie in the response
-                Cookie c1 = new Cookie("SESSIONID", sessionId);
-                c1.setMaxAge(60 * 60);
-                c1.setSecure(true);
-                response.addCookie(c1);
+                response.addHeader("Set-Cookie", "SESSIONID="+ sessionId + ";");
 
                 response.sendRedirect("./adduser.jsp");
             }
